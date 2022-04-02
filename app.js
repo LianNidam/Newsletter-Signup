@@ -17,6 +17,7 @@ app.get("/", function(req,res){
 });
 
 app.post("/", function(req, res){
+
   const firstName= req.body.fName;
   const lasttName= req.body.lName;
   const email= req.body.email;
@@ -40,15 +41,15 @@ app.post("/", function(req, res){
 
   const options = {
     method: "POST",
-    auth: "Lian:cdee1f1d875be1a61df1299dc49ad2c4-us14"
+    auth: "Lian:85a9ac206e3cadb8655666d9a9169a31-us14"
   }
 
 const request= https.request(url, options, function(response){
 
   if(response.statusCode === 200){
-    res.send("Successfully subscribed!");
+    res.sendFile(__dirname + "/success.html");
   } else{
-    res.send("There was an error with signing up, please try again!");
+    res.sendFile(__dirname + "/Faliure.html");
   }
 
     response.on("data", function(data){
@@ -59,7 +60,14 @@ const request= https.request(url, options, function(response){
 request.write(jsonData);
 request.end();
 
+});
 
+app.post("/failure", function(req, res){
+  res.redirect("/");
+});
+
+app.post("/success", function(req, res){
+  res.redirect("/");
 });
 
 
@@ -69,7 +77,16 @@ app.listen(3000, function(){
 
 
 //api key
-//cdee1f1d875be1a61df1299dc49ad2c4-us14
+//85a9ac206e3cadb8655666d9a9169a31-us14
 
 //list Id
 //87557e7fb6
+
+
+/*
+if(response.statusCode === 200){
+  res.sendFile(__dirname + "/success.html");
+} else{
+  res.sendFile(__dirname + "/Faliure.html");
+}
+*/
