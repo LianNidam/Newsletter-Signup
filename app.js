@@ -6,6 +6,7 @@ const bodyParser =require("body-parser");
 const request =require("request");
 const https =require("https");
 
+require(".env").config();
 
 const app= express();
 
@@ -37,11 +38,14 @@ app.post("/", function(req, res){
 
   const jsonData= JSON.stringify(data);
 
-  const url= "https://us14.api.mailchimp.com/3.0/lists/87557e7fb6";
+  const MyAPI_KEY = process.env.API_KEY;
+  const MyLIST_ID = process.env.LIST_ID;
+
+  const url= "https://"+MyAPI_KEY+".api.mailchimp.com/3.0/lists/"+MyLIST_ID;
 
   const options = {
     method: "POST",
-    auth: "Lian:3c6cbe81e848100125c16bdca4f8895c-us14"
+    auth: "doe:" + MyAPI_KEY
   }
 
 const request= https.request(url, options, function(response){
