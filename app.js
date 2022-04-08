@@ -6,7 +6,7 @@ const bodyParser =require("body-parser");
 const request =require("request");
 const https =require("https");
 
-require(".env").config();
+//require(".env").config();
 
 const app= express();
 
