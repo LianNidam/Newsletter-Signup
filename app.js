@@ -78,15 +78,3 @@ app.post("/success", function(req, res){
 app.listen(process.env.PORT || 3000 , function(){
   console.log("server is runnig on port 3000.")
 });
-
-
-
-
-
-/*
-if(response.statusCode === 200){
-  res.sendFile(__dirname + "/success.html");
-} else{
-  res.sendFile(__dirname + "/Faliure.html");
-}
-*/
